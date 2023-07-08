@@ -1,3 +1,95 @@
 .center { 
     text-align: center;
 }
+
+.cuisine-button { 
+    margin-right: 1em;
+    padding: 1rem;
+    background-color: rgb(78, 78, 246);
+    color: white;
+    border-color: white;
+    border-radius: 0.5rem;
+}
+
+.cuisinebutton-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.restaurant-container { 
+    display: flex;
+    flex-direction: column;
+    /* align-items:flex-start; */
+}
+
+
+.card-cont { 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    background-color: rgb(246, 187, 187);
+}
+
+.card-details { 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+}
+
+/* width: 350px; */
+
+
+.card-img {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* #8818081c */
+    /* background: #8818081c; */
+    /* width: 13rem; */
+    /* height: 15rem; */
+    /* 330x220 */
+    width: 198px;
+    height: 198px;
+    position: relative;
+    padding: 2rem 1rem;
+}
+
+.card-img img {
+    height: 90%;
+    width: auto;
+}
+
+a { 
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+.menu-items { 
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.restaurant-info-container { 
+    display: flex;
+    gap: 200px;
+}
+
+.button-container { 
+    display: flex;
+    
+}
+
+.review-button {
+    flex-shrink: 0; /* Prevent the button from shrinking to fit the available space */
+    width: auto; /* Allow the button to have its natural width */
+    height: auto;
+  }
+  
