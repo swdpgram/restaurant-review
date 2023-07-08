@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { restaurantsData } from "../data";
 import { Link } from "react-router-dom";
-import {useState} from "react";
+import { useState } from "react";
 
 import {
   Modal,
@@ -39,6 +39,8 @@ export function Restaurant() {
       <Link to="/"> {"<  "}Back to home page </Link>
 
       <div className="restaurant-info-container">
+        
+        <div className="review-top">
         <div className="restaurant-info">
           <h1> {restaurantIndividualInfo.name} </h1>
           <p>
@@ -64,110 +66,88 @@ export function Restaurant() {
         </div>
 
         <div className="button-container">
-
-          <button className="review-button"
-           onClick={handlesubmitClick}
-          >
+          <button className="review-button" onClick={handlesubmitClick}>
             Write a Review
           </button>
 
-     <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Write a review </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <div className="review-container">
-              <div className="gravatar-body">
-                <div>
-                  <p> Change your Gravatar </p> // title
+          <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+            <ModalOverlay />
+            <ModalContent className="modal-container">
+              <ModalHeader>
+                {" "}
+                <span className="modal-title">
+                  {" "}
+                  Write a review{" "}
+                </span> <hr />{" "}
+              </ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <div className="review-container">
+                  <div className="review-body">
+                  
+                    <div className="rating">
+                      <label htmlFor="rating">
+                        Repeat:
+                        <select
+                          name="rating"
+                          id="rating"
+                        //   onChange={habitHandler}
+                        >
+                          <option> Select </option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                      </label>
+                    </div>
+                   
+                    <div className="comment">
+                      Comment:
+                      <textarea
+                        name="bio"
+                        placeholder="Enter your review"
+                        // value={textEdit.bio}
+                        // onChange={textEditHandler}
+                      ></textarea>
+                    </div>
+
+                    <hr />
+                  </div>
+
+                  <hr />
+                  <br />
                 </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  colorScheme="blue"
+                  mr={3}
+                  onClick={() => {
+                    // editUserHandler(textEdit);
+                    handleCloseModal();
+                  }}
+                >
+                  Save
+                </Button>
+                {/* <Button variant="ghost">Delete</Button> */}
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        </div>
 
-                <div className="gravatar-container">
-     
-                  <img
-                    src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_6.jpg"
-                    alt="gravatar_1"
-                    name="gr_5"
-                    className="gravatar-icon"
-                    onClick={() =>
-                      avatarHandler(
-                        "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_6.jpg"
-                      )
-                    }
-                  />
+        </div>
 
-                  <img
-                    src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688107497/Gravatar/Gravatar_1.jpg"
-                    alt="gravatar_1"
-                    name="gr_6"
-                    className="gravatar-icon"
-                    onClick={() =>
-                      avatarHandler(
-                        "https://res.cloudinary.com/djhnar3ju/image/upload/v1688107497/Gravatar/Gravatar_1.jpg"
-                      )
-                    }
-                  />
-                </div>
-
-                <hr />
-
-                {/* <div className="current-gravatar">
-                  <p> Your gravatar </p>
-                  <img
-                    src={textEdit.profileimage}
-                    alt="gravatar_1"
-                    className="gravatar-icon"
-                  />
-                </div> */}
-              </div>
-
-              <hr />
-
-              <p>
-                Name: 
-              </p>
-              <hr />
-              <p> Username: </p>
-              <hr />
-              <br />
-              <p> Bio </p>
-              <textarea
-                name="bio"
-                // value={textEdit.bio}
-                // onChange={textEditHandler}
-              >
-                Hello
-              </textarea>
-
-              <hr />
-              <br />
-              <p> Link ( eg. https://www.example.com ) </p>
-              {/* <textarea
-                name="link"
-                // value={textEdit.link}
-                // onChange={textEditHandler}
-              >
-                {currentUser.link}
-              </textarea> */}
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              colorScheme="blue"
-              mr={3}
-              onClick={() => {
-                // editUserHandler(textEdit);
-                handleCloseModal();
-              }}
-            >
-              Save
-            </Button>
-            {/* <Button variant="ghost">Delete</Button> */}
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
+        <div className="reviews"> 
+  {restaurantIndividualInfo.ratings.map((item, index)=> { 
+    return(
+        <div key={index}>
+        {item.revName}
+        {item.comment}
+        <img src={item.pp} alt="a"/>
+        Rating: {item.rating}/5 
+        </div>
+    );
+  })}
         </div>
 
       </div>

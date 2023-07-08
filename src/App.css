@@ -80,6 +80,7 @@ a {
 .restaurant-info-container { 
     display: flex;
     gap: 200px;
+    justify-content: center;
 }
 
 .button-container { 
@@ -93,3 +94,15 @@ a {
     height: auto;
   }
   
+  .modal-title { 
+    color: blue;
+  }
+
+  .modal-container { 
+    background-color: pink;
+  }
+
+  .review-top { 
+    display: flex;
+    gap: 200px;
+  }
